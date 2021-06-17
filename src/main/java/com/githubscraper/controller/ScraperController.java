@@ -2,6 +2,7 @@ package com.githubscraper.controller;
 
 import com.githubscraper.dto.RepoInfoDTO;
 import com.githubscraper.service.ScraperService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,7 @@ public class ScraperController {
     }
 
     @GetMapping
+    @ApiOperation("Get information about github repository")
     public List<RepoInfoDTO> getGithubInfos(@RequestParam String url) {
         return scraperService.getInfos(url);
     }
