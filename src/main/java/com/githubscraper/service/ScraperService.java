@@ -4,9 +4,10 @@ import com.githubscraper.client.GithubClient;
 import com.githubscraper.dto.Info;
 import com.githubscraper.dto.Node;
 import com.githubscraper.dto.RepoInfoDTO;
-import com.githubscraper.utils.RegexUtils;
 import com.githubscraper.utils.Consts;
+import com.githubscraper.utils.RegexUtils;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -24,6 +25,7 @@ public class ScraperService {
         this.fileService = fileService;
     }
 
+    @Cacheable(cacheNames = "Repo", key = "#url")
     public List<RepoInfoDTO> getInfos(String url) {
         Map<String, Info> extensions = new HashMap<>();
         Node rootNode = new Node(url, new ArrayList<>());

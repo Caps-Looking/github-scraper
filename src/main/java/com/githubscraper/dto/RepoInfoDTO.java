@@ -3,9 +3,11 @@ package com.githubscraper.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @AllArgsConstructor
 @Data
-public class RepoInfoDTO {
+public class RepoInfoDTO implements Serializable {
 
     private String extension;
     private int count;
