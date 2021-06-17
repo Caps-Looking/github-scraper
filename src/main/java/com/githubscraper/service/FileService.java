@@ -3,14 +3,14 @@ package com.githubscraper.service;
 import com.githubscraper.client.GithubClient;
 import com.githubscraper.dto.Info;
 import com.githubscraper.utils.ByteConverterUtils;
-import com.githubscraper.utils.RegexUtils;
 import com.githubscraper.utils.Consts;
-import org.springframework.stereotype.Component;
+import com.githubscraper.utils.RegexUtils;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 
-@Component
+@Service
 public class FileService {
 
     private final GithubClient githubClient;
