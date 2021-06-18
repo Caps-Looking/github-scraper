@@ -1,5 +1,6 @@
 package com.githubscraper.client;
 
+import com.githubscraper.exceptions.ClientException;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -23,7 +24,7 @@ public class GithubClient {
             Response execute = okHttpClient.newCall(request).execute();
             return Objects.requireNonNull(execute.body()).string();
         } catch (IOException e) {
-            throw new RuntimeException("Request failed");
+            throw new ClientException();
         }
     }
 }
