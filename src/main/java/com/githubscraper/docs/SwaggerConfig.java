@@ -2,6 +2,10 @@ package com.githubscraper.docs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -34,4 +38,14 @@ public class SwaggerConfig {
                 .build();
     }
 
+    @RestController
+    @RequestMapping("/")
+    public static class BaseController {
+
+        @GetMapping
+        public RedirectView index() {
+            return new RedirectView("/swagger-ui.html");
+        }
+
+    }
 }
