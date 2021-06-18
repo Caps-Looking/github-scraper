@@ -1,0 +1,7 @@
+setup:
+  addons:
+    - plan: Heroku-redis
+      as: CACHE
+build:
+  docker:
+    web: Dockerfile
