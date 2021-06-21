@@ -18,6 +18,8 @@ To run only automated tests:
 ./mvnw clean verify
 ```
 
+To access the docs locally, go to [http://localhost:8080/](http://localhost:8080/).
+
 ## Heroku instance
 
 Go to [philipe-github-scraper](https://philipe-github-scraper.herokuapp.com/) to open swagger documentation.

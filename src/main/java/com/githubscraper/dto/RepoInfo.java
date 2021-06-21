@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @AllArgsConstructor
 @Data
-public class RepoInfoDTO implements Serializable {
+public class RepoInfo implements Serializable {
 
     private String extension;
     private int count;

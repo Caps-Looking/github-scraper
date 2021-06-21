@@ -1,7 +1,7 @@
 package com.githubscraper.service;
 
 import com.githubscraper.client.GithubClient;
-import com.githubscraper.dto.RepoInfoDTO;
+import com.githubscraper.dto.RepoInfo;
 import com.githubscraper.mocks.HtmlMocks;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -33,7 +33,7 @@ public class ScraperServiceTests {
         Mockito.when(githubClient.getHtml(url + "/directory")).thenReturn(HtmlMocks.DIRECTORY_HTML);
         Mockito.when(githubClient.getHtml(url)).thenReturn(HOME_HTML);
 
-        List<RepoInfoDTO> execution = scraperService.getInfos(url);
+        List<RepoInfo> execution = scraperService.getInfos(url);
 
         Assertions.assertThat(execution.get(0).getExtension()).isEqualTo("json");
         Assertions.assertThat(execution.get(0).getCount()).isEqualTo(1);

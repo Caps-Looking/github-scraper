@@ -3,7 +3,7 @@ package com.githubscraper.service;
 import com.githubscraper.client.GithubClient;
 import com.githubscraper.dto.Info;
 import com.githubscraper.dto.Node;
-import com.githubscraper.dto.RepoInfoDTO;
+import com.githubscraper.dto.RepoInfo;
 import com.githubscraper.utils.Consts;
 import com.githubscraper.utils.RegexUtils;
 import org.jetbrains.annotations.NotNull;
@@ -26,7 +26,7 @@ public class ScraperService {
     }
 
     @Cacheable(cacheNames = "Repo", key = "#url")
-    public List<RepoInfoDTO> getInfos(String url) {
+    public List<RepoInfo> getInfos(String url) {
         Map<String, Info> extensions = new HashMap<>();
         Node rootNode = new Node(url, new ArrayList<>());
 
@@ -35,10 +35,10 @@ public class ScraperService {
     }
 
     @NotNull
-    private List<RepoInfoDTO> buildRepoInfos(Map<String, Info> extensions) {
-        List<RepoInfoDTO> repoInfos = new ArrayList<>();
-        extensions.forEach((key, info) -> repoInfos.add(new RepoInfoDTO(key, info.getCount(), info.getLines(), info.getBytes())));
-        repoInfos.sort(Comparator.comparing(RepoInfoDTO::getExtension));
+    private List<RepoInfo> buildRepoInfos(Map<String, Info> extensions) {
+        List<RepoInfo> repoInfos = new ArrayList<>();
+        extensions.forEach((key, info) -> repoInfos.add(new RepoInfo(key, info.getCount(), info.getLines(), info.getBytes())));
+        repoInfos.sort(Comparator.comparing(RepoInfo::getExtension));
         return repoInfos;
     }
 
